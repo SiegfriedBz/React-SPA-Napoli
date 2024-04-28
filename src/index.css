@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  font-size: 100%;
+}
+
+@layer base {
+  input,
+  button {
+    @apply outline-none;
+  }
+
+  li a {
+    @apply tracking-wide;
+  }
+}
+
+@layer components {
+  .main {
+    @apply overflow-y-auto container mx-auto;
+  }
+
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .main::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .main {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /** header component nav links */
+  .skew-link {
+    padding: 0.25rem 0.75rem;
+    background-image: linear-gradient(
+      105deg,
+      transparent 0%,
+      transparent 1%,
+      theme(colors.primary.light) 1%,
+      theme(colors.primary.light) 100%
+    );
+    background-size: 25000%;
+
+    transition: all 0.75s cubic-bezier(1, 0, 0, 1);
+  }
+
+  .skew-link:hover {
+    background-size: 100%;
+    color: theme(colors.stone.900);
+  }
+
+  /** loading component */
+  /* https://dev.to/afif/i-made-100-css-loaders-for-your-next-project-4eje */
+  .loading {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(theme(colors.primary.DEFAULT) 0 0);
+    background:
+      var(--c) 0% 50%,
+      var(--c) 50% 50%,
+      var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+  }
+
+  @keyframes loading {
+    20% {
+      background-position:
+        0% 0%,
+        50% 50%,
+        100% 50%;
+    }
+    40% {
+      background-position:
+        0% 100%,
+        50% 0%,
+        100% 50%;
+    }
+    60% {
+      background-position:
+        0% 50%,
+        50% 100%,
+        100% 0%;
+    }
+    80% {
+      background-position:
+        0% 50%,
+        50% 50%,
+        100% 100%;
+    }
+  }
+
+  /* loading geolocation */
+  .loading-2 {
+    width: 1px;
+    color: theme(colors.primary.DEFAULT);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    box-shadow:
+      19px -19px 0 0px,
+      38px -19px 0 0px,
+      57px -19px 0 0px,
+      19px 0 0 5px,
+      38px 0 0 5px,
+      57px 0 0 5px,
+      19px 19px 0 0px,
+      38px 19px 0 0px,
+      57px 19px 0 0px;
+    transform: translateX(-38px);
+    animation: loading-2 2s infinite linear;
+  }
+  @keyframes loading-2 {
+    12.5% {
+      box-shadow:
+        19px -19px 0 0px,
+        38px -19px 0 0px,
+        57px -19px 0 5px,
+        19px 0 0 5px,
+        38px 0 0 0px,
+        57px 0 0 5px,
+        19px 19px 0 0px,
+        38px 19px 0 0px,
+        57px 19px 0 0px;
+    }
+    25% {
+      box-shadow:
+        19px -19px 0 5px,
+        38px -19px 0 0px,
+        57px -19px 0 5px,
+        19px 0 0 0px,
+        38px 0 0 0px,
+        57px 0 0 0px,
+        19px 19px 0 0px,
+        38px 19px 0 5px,
+        57px 19px 0 0px;
+    }
+    50% {
+      box-shadow:
+        19px -19px 0 5px,
+        38px -19px 0 5px,
+        57px -19px 0 0px,
+        19px 0 0 0px,
+        38px 0 0 0px,
+        57px 0 0 0px,
+        19px 19px 0 0px,
+        38px 19px 0 0px,
+        57px 19px 0 5px;
+    }
+    62.5% {
+      box-shadow:
+        19px -19px 0 0px,
+        38px -19px 0 0px,
+        57px -19px 0 0px,
+        19px 0 0 5px,
+        38px 0 0 0px,
+        57px 0 0 0px,
+        19px 19px 0 0px,
+        38px 19px 0 5px,
+        57px 19px 0 5px;
+    }
+    75% {
+      box-shadow:
+        19px -19px 0 0px,
+        38px -19px 0 5px,
+        57px -19px 0 0px,
+        19px 0 0 0px,
+        38px 0 0 0px,
+        57px 0 0 5px,
+        19px 19px 0 0px,
+        38px 19px 0 0px,
+        57px 19px 0 5px;
+    }
+    87.5% {
+      box-shadow:
+        19px -19px 0 0px,
+        38px -19px 0 5px,
+        57px -19px 0 0px,
+        19px 0 0 0px,
+        38px 0 0 5px,
+        57px 0 0 0px,
+        19px 19px 0 5px,
+        38px 19px 0 0px,
+        57px 19px 0 0px;
+    }
+  }
+
+  /* loading ingredients */
+  .loading-3 {
+    --s: 64px;
+    width: var(--s);
+    aspect-ratio: 2;
+    --_g: theme(colors.primary.DEFAULT) 90%, theme(colors.primary.light);
+    background:
+      radial-gradient(farthest-side, var(--_g)) 0 50%/25% 50%,
+      radial-gradient(farthest-side at bottom, var(--_g)) 50%
+        calc(50% - var(--s) / 16) / 25% 25%,
+      radial-gradient(farthest-side at top, var(--_g)) 50%
+        calc(50% + var(--s) / 16) / 25% 25%,
+      radial-gradient(farthest-side at bottom, var(--_g)) 100%
+        calc(50% - var(--s) / 16) / 25% 25%,
+      radial-gradient(farthest-side at top, var(--_g)) 100%
+        calc(50% + var(--s) / 16) / 25% 25%;
+    background-repeat: no-repeat;
+    animation: loading-3 1s infinite;
+  }
+  @keyframes loading-3 {
+    25% {
+      background-position:
+        0 50%,
+        50% 0,
+        50% 100%,
+        100% 0,
+        100% 100%;
+    }
+    50% {
+      background-position:
+        100% 50%,
+        0 0,
+        0 100%,
+        50% 0,
+        50% 100%;
+    }
+    75%,
+    100% {
+      background-position:
+        100% 50%,
+        0 calc(50% - var(--s) / 16),
+        0 calc(50% + var(--s) / 16),
+        50% calc(50% - var(--s) / 16),
+        50% calc(50% + var(--s) / 16);
+    }
+  }
+}
